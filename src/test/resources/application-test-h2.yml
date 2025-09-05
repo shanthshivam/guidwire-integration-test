@@ -1,0 +1,39 @@
+# src/test/resources/application-test-h2.yml (H2 in-memory database for when Docker is not available)
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+  
+  profiles:
+    active: test-h2
+  
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+# External service URLs
+customer:
+  service:
+    url: http://localhost:8081
+
+policy:
+  service:
+    url: http://localhost:8082
+
+# Logging configuration for tests
+logging:
+  level:
+    com.aviva: INFO
+    org.springframework.web: INFO
+    com.github.tomakehurst.wiremock: INFO

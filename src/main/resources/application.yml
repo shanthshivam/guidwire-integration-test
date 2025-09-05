@@ -1,0 +1,69 @@
+#
+## src/main/resources/application.yml (for reference)
+#spring:
+#  application:
+#    name: auto-claims-service
+#  
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/claims_service
+#    username: claims_user
+#    password: claims_password
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#  
+#  jackson:
+#    serialization:
+#      write-dates-as-timestamps: false
+#
+## External service configurations
+#customer:
+#  service:
+#    url: http://customer-service:8080
+#
+#policy:
+#  service:
+#    url: http://policy-service:8080
+#
+#server:
+#  port: 8080
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health,info,metrics
+#  endpoint:
+#    health:
+#      show-details: always
+#
+#
+# src/main/resources/application.yml (for reference)
+spring:
+  application:
+    name: auto-claims-service
+  
+  datasource:
+    # Production PostgreSQL configuration (can be overridden by environment)
+    url: jdbc:postgresql://localhost:5432/claims_service
+    username: claims_user
+    password: claims_password
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false

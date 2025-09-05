@@ -1,0 +1,180 @@
+## src/test/resources/application-test.yml
+#spring:
+#  datasource:
+#    # These will be overridden by TestContainers
+#    url: jdbc:mysql://localhost:3306/test_db
+#    username: test
+#    password: test
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        format_sql: true
+#  
+#  profiles:
+#    active: test
+#  
+#  jackson:
+#    serialization:
+#      write-dates-as-timestamps: false
+#
+## External service URLs (will be overridden by TestContainers)
+#customer:
+#  service:
+#    url: http://localhost:8081
+#
+#policy:
+#  service:
+#    url: http://localhost:8082
+#
+## Logging configuration for tests
+#logging:
+#  level:
+#    com.aviva: DEBUG
+#    org.springframework.web: DEBUG
+#    org.testcontainers: INFO
+#    com.github.tomakehurst.wiremock: INFO
+#
+#---
+## src/main/resources/application.yml (for reference)
+#spring:
+#  application:
+#    name: auto-claims-service
+#  
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/claims_service
+#    username: claims_user
+#    password: claims_password
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#  
+#  jackson:
+#    serialization:
+#      write-dates-as-timestamps: false
+#
+## External service configurations
+#customer:
+#  service:
+#    url: http://customer-service:8080
+#
+#policy:
+#  service:
+#    url: http://policy-service:8080
+#
+#server:
+#  port: 8080
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health,info,metrics
+#  endpoint:
+#    health:
+#      show-details: always
+#
+#
+
+
+## src/test/resources/application-test.yml
+#spring:
+#  datasource:
+#    # These will be overridden by TestContainers
+#    url: jdbc:mysql://localhost:3306/test_db
+#    username: test
+#    password: test
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        format_sql: true
+#  
+#  profiles:
+#    active: test
+#  
+#  jackson:
+#    serialization:
+#      write-dates-as-timestamps: false
+#
+## External service URLs (will be overridden by TestContainers)
+#customer:
+#  service:
+#    url: http://localhost:8081
+#
+#policy:
+#  service:
+#    url: http://localhost:8082
+#
+## Logging configuration for tests
+#logging:
+#  level:
+#    com.aviva: DEBUG
+#    org.springframework.web: DEBUG
+#    org.testcontainers: INFO
+#    com.github.tomakehurst.wiremock: INFO
+
+# src/test/resources/application-test.yml
+spring:
+  main:
+    allow-bean-definition-overriding: true  # Allow bean overriding for tests
+  datasource:
+    # These will be overridden by TestContainers
+    url: jdbc:postgresql://localhost:5432/test_db
+    username: test
+    password: test
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+# External service URLs (will be overridden by TestContainers)
+customer:
+  service:
+    url: http://localhost:8082
+
+policy:
+  service:
+    url: http://localhost:8083
+
+# Logging configuration for tests
+logging:
+  level:
+    com.aviva: DEBUG
+    org.springframework.web: INFO
+    org.testcontainers: INFO
+    org.springframework.boot: INFO
+    root: INFO
+
+# Disable web security for tests
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
